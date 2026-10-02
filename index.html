@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress Images Online Free — JPEG, PNG, WebP | CompactPic</title>
+    <meta name="description" content="Free online image compressor. Shrink JPEG, PNG, WebP photos, convert formats, resize in bulk and download as ZIP. 100% client-side — your photos never leave your browser. No signup, no limits.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://compactpic.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CompactPic">
+    <meta property="og:title" content="CompactPic — Free Online Image Compressor">
+    <meta property="og:description" content="Shrink JPEG, PNG, WebP in bulk. Convert formats, compare before/after, download as ZIP. Private, free, no signup.">
+    <meta property="og:url" content="https://compactpic.com/">
+    <meta property="og:image" content="https://compactpic.com/icon.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CompactPic — Free Online Image Compressor">
+    <meta name="twitter:description" content="Shrink JPEG, PNG, WebP in bulk. Private, free, no signup.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗜️</text></svg>">
+    <meta name="theme-color" content="#0d1117">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="753da090-5ac6-475f-9ab5-ca0be8eb1316"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CompactPic",
+      "url": "https://compactpic.com/",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": "Image compressor, JPEG compressor, PNG compressor, WebP converter, bulk image resize, batch image download as ZIP, before after image comparison"
+    }
+    </script>
+    <style>
+        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#79b8ff;--success:#3fb950;--warning:#d29922;--error:#f85149;--border:#30363d;--shadow:rgba(0,0,0,.3);--radius:8px;--transition:.2s ease}
+        [data-theme=light]{--bg:#fff;--bg2:#f6f8fa;--bg3:#eaeef2;--text:#1f2328;--text2:#59636e;--accent:#0969da;--accent2:#0550ae;--success:#1a7f37;--warning:#9a6700;--error:#d1242f;--border:#d1d9e0;--shadow:rgba(0,0,0,.1)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+        .header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--bg2);border-bottom:1px solid var(--border);flex-shrink:0}
+        .logo{margin:0;font-size:18px;font-weight:700}
+        .logo a{color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+        .logo a span{color:var(--accent)}
+        .header-actions{display:flex;gap:8px;align-items:center}
+        .btn{padding:6px 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg3);color:var(--text);cursor:pointer;font-size:13px;transition:all var(--transition);display:inline-flex;align-items:center;gap:6px}
+        .btn:hover{background:var(--border)}
+        .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+        .btn-primary:hover{background:var(--accent2)}
+        .btn-sm{padding:4px 8px;font-size:12px}
+        .btn:disabled{opacity:.5;cursor:not-allowed}
+        .main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:16px}
+        .settings{display:flex;align-items:center;gap:16px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;flex-wrap:wrap}
+        .setting{display:flex;align-items:center;gap:8px;font-size:13px}
+        .setting label{color:var(--text2);font-weight:600}
+        select,input[type=number],input[type=text]{padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg3);color:var(--text);font-size:13px;outline:none}
+        select:focus,input:focus{border-color:var(--accent)}
+        input[type=range]{accent-color:var(--accent);width:140px}
+        .quality-val{font-weight:700;min-width:44px;color:var(--accent)}
+        .dropzone{border:2px dashed var(--border);border-radius:12px;padding:48px 20px;text-align:center;cursor:pointer;transition:all var(--transition);background:var(--bg2)}
+        .dropzone:hover,.dropzone.dragover{border-color:var(--accent);background:var(--bg3)}
+        .dropzone .icon{font-size:48px;margin-bottom:12px}
+        .dropzone h2{font-size:18px;margin-bottom:8px}
+        .dropzone p{font-size:13px;color:var(--text2)}
+        .bulkbar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;flex-wrap:wrap;font-size:13px}
+        .bulkbar .saved{color:var(--success);font-weight:700}
+        .file-list{display:flex;flex-direction:column;gap:10px}
+        .file-item{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius)}
+        .file-item img.thumb{width:56px;height:56px;object-fit:cover;border-radius:6px;flex-shrink:0;background:var(--bg3)}
+        .file-info{flex:1;min-width:0}
+        .file-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .file-meta{font-size:12px;color:var(--text2);margin-top:2px}
+        .file-meta .saved{color:var(--success);font-weight:700}
+        .file-meta .working{color:var(--warning)}
+        .file-actions{display:flex;gap:6px;flex-shrink:0}
+        .empty-note{text-align:center;color:var(--text2);font-size:13px;padding:8px}
+        .status-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:var(--bg2);border-top:1px solid var(--border);font-size:12px;color:var(--text2)}
+        .status-left,.status-right{display:flex;gap:16px;align-items:center}
+        .status-bar a{color:var(--text2);text-decoration:none}
+        .status-bar a:hover{color:var(--accent)}
+        .toast-container{position:fixed;top:20px;right:20px;z-index:10000;display:flex;flex-direction:column;gap:8px}
+        .toast{padding:12px 16px;border-radius:var(--radius);color:#fff;font-size:14px;animation:slideIn .3s ease;box-shadow:0 4px 12px var(--shadow);max-width:350px}
+        .toast-success{background:var(--success)}
+        .toast-error{background:var(--error)}
+        .toast-info{background:var(--accent)}
+        @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+        dialog{background:var(--bg2);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:720px;width:calc(100vw - 40px);max-height:86vh;overflow:auto}
+        dialog::backdrop{background:rgba(0,0,0,.6)}
+        .dialog-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .dialog-head h2{font-size:18px}
+        #aboutDialog h3{font-size:15px;margin:16px 0 8px}
+        #aboutDialog p,#aboutDialog li{font-size:14px;line-height:1.7}
+        #aboutDialog ul{padding-left:20px}
+        #aboutDialog details{margin-bottom:8px;border:1px solid var(--border);border-radius:8px;padding:8px 12px}
+        #aboutDialog summary{cursor:pointer;font-weight:600;font-size:14px}
+        .compare-wrap{position:relative;border-radius:8px;overflow:hidden;background:var(--bg3)}
+        .compare-wrap img{display:block;width:100%;max-height:55vh;object-fit:contain}
+        .compare-wrap img.cmp-before{position:absolute;inset:0}
+        .compare-ctrl{margin-top:12px}
+        .compare-ctrl input{width:100%}
+        .compare-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:6px}
+        .compare-stats{font-size:13px;margin-top:10px;text-align:center}
+        .compare-stats .saved{color:var(--success);font-weight:700}
+        ::-webkit-scrollbar{width:8px;height:8px}
+        ::-webkit-scrollbar-track{background:var(--bg)}
+        ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+        @media(max-width:640px){.file-item{flex-wrap:wrap}.settings{gap:10px}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo"><a href="#">🗜️ Compact<span>Pic</span></a></h1>
+        <div class="header-actions">
+            <button class="btn btn-sm" id="aboutBtn" title="About CompactPic">ℹ️ About</button>
+            <button class="btn btn-sm" id="themeToggle" title="Toggle theme">🌙</button>
+        </div>
+    </header>
+    <main class="main">
+        <div class="settings">
+            <div class="setting"><label for="quality">Quality</label><input type="range" id="quality" min="10" max="100" value="80"><span class="quality-val" id="qualityVal">80%</span></div>
+            <div class="setting"><label for="maxDim">Max size (px)</label><input type="number" id="maxDim" value="1920" min="0" max="8000" step="10" style="width:80px" title="Longest side in pixels. 0 = keep original."></div>
+            <div class="setting"><label for="format">Format</label>
+                <select id="format">
+                    <option value="auto">Auto (keep)</option>
+                    <option value="image/jpeg">JPEG</option>
+                    <option value="image/png">PNG</option>
+                    <option value="image/webp">WebP</option>
+                    <option value="image/avif" id="avifOpt" hidden>AVIF</option>
+                </select>
+            </div>
+            <div class="setting" style="margin-left:auto;">
+                <button class="btn" id="sampleBtn">🖼️ Try sample</button>
+                <button class="btn btn-primary" id="downloadAllBtn" disabled>📦 Download All (ZIP)</button>
+                <button class="btn" id="clearBtn">🗑️ Clear</button>
+            </div>
+        </div>
+        <div class="dropzone" id="dropzone">
+            <div class="icon">🖼️</div>
+            <h2>Drag & drop images here</h2>
+            <p>or click to browse — JPG, PNG, WebP, GIF &nbsp;•&nbsp; unlimited files &nbsp;•&nbsp; nothing is uploaded</p>
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" multiple hidden>
+        </div>
+        <div class="bulkbar" id="bulkbar" hidden>
+            <span id="bulkStats">0 files</span>
+            <span class="saved" id="bulkSaved"></span>
+        </div>
+        <div class="file-list" id="fileList">
+            <div class="empty-note">No images yet — drop some above to start shrinking.</div>
+        </div>
+    </main>
+    <footer class="status-bar">
+        <div class="status-left"><span id="statusText">Ready</span></div>
+        <div class="status-right"><a href="https://github.com/glennree318-netizen/compactpic/issues/new?labels=bug" target="_blank" rel="noopener">🐞 Report bug</a><a href="https://github.com/glennree318-netizen/compactpic/issues/new?labels=enhancement" target="_blank" rel="noopener">💡 Request feature</a><span>🔒 100% Client-Side</span><span>🗜️ CompactPic v1.0</span></div>
+    </footer>
+    <dialog id="compareDialog">
+        <div class="dialog-head"><h2 id="compareTitle">Compare</h2><button class="btn btn-sm" id="compareClose">✕ Close</button></div>
+        <div class="compare-labels"><span>← Before (original)</span><span>After (compressed) →</span></div>
+        <div class="compare-wrap"><img id="cmpAfter" alt="compressed"><img id="cmpBefore" class="cmp-before" alt="original"></div>
+        <div class="compare-ctrl"><input type="range" id="cmpRange" min="0" max="100" value="50"></div>
+        <div class="compare-stats" id="cmpStats"></div>
+    </dialog>
+    <dialog id="aboutDialog">
+        <div class="dialog-head"><h2>🗜️ About CompactPic</h2><button class="btn btn-sm" id="aboutClose">✕ Close</button></div>
+        <p><strong>CompactPic</strong> is a free online <strong>image compressor</strong>. Shrink JPEG, PNG and WebP photos, convert between formats, resize in bulk, and download everything as a ZIP — with a before/after slider so you can see exactly what changed. 100% client-side: your photos never leave your browser, no signup, no limits, no watermark.</p>
+        <h3>Frequently asked questions</h3>
+        <details><summary>Are my photos uploaded anywhere?</summary><p>No. Compression happens entirely in your browser using canvas. You can disconnect from the internet after loading the page and keep working.</p></details>
+        <details><summary>Is there a file limit?</summary><p>No. Unlimited files, unlimited size, free forever. Your browser's memory is the only limit.</p></details>
+        <details><summary>Which formats are supported?</summary><p>Input: JPEG, PNG, WebP, GIF (GIFs are flattened to their first frame). Output: JPEG, PNG or WebP — or keep the original format.</p></details>
+        <details><summary>What quality should I use?</summary><p>80% is a great default — usually 60–80% smaller with no visible difference. Product photos: 75–85%. Thumbnails: 60–70%.</p></details>
+        <details><summary>Does it work offline?</summary><p>Yes. CompactPic is an installable PWA — after your first visit it keeps working without internet.</p></details>
+        <details><summary>How do I report a bug or request a feature?</summary><p>Use the <strong>🐞 Report bug</strong> and <strong>💡 Request feature</strong> links in the footer — they open a GitHub issue where you can describe what happened. A simple contact form is coming soon for non-technical users.</p></details>
+    </dialog>
+    <div class="toast-container" id="toastContainer"></div>
+    <script>
+        // === Helpers ===
+        const $ = id => document.getElementById(id);
+        const files = [];
+        let fileSeq = 0;
+        let gifWarned = false;
+
+        function showToast(message, type = 'info') {
+            const container = $('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
+        }
+
+        function fmtSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        // === Theme ===
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            $('themeToggle').textContent = next === 'light' ? '☀️' : '🌙';
+            localStorage.setItem('compactpic_theme', next);
+        }
+        $('themeToggle').addEventListener('click', toggleTheme);
+        (function initTheme() {
+            const saved = localStorage.getItem('compactpic_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+            $('themeToggle').textContent = saved === 'light' ? '☀️' : '🌙';
+        })();
+
+        // === Settings ===
+        function getQuality() { return Math.min(100, Math.max(10, parseInt($('quality').value) || 80)); }
+        function getMaxDim() { return Math.max(0, parseInt($('maxDim').value) || 0); }
+        function getFormat() { return $('format').value; }
+        $('quality').addEventListener('input', () => {
+            $('qualityVal').textContent = $('quality').value + '%';
+            recompressAll();
+        });
+        $('maxDim').addEventListener('change', recompressAll);
+        $('format').addEventListener('change', recompressAll);
+        $('format').addEventListener('change', () => trackEvent('format-' + getFormat().split('/')[1]));
+
+        // === File intake ===
+        const dropzone = $('dropzone');
+        const fileInput = $('fileInput');
+        dropzone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', () => { addFiles(fileInput.files); fileInput.value = ''; });
+        ['dragenter', 'dragover'].forEach(ev => dropzone.addEventListener(ev, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); }));
+        ['dragleave', 'drop'].forEach(ev => dropzone.addEventListener(ev, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); }));
+        dropzone.addEventListener('drop', (e) => addFiles(e.dataTransfer.files));
+
+        function addFiles(fileList) {
+            const incoming = [...fileList].filter(f => f.type.startsWith('image/'));
+            if (!incoming.length) { showToast('No image files found', 'error'); return; }
+            const skipped = fileList.length - incoming.length;
+            if (skipped > 0) showToast(skipped + ' non-image file(s) skipped', 'error');
+            incoming.forEach(f => {
+                if (f.type === 'image/gif' && !gifWarned) {
+                    gifWarned = true;
+                    showToast('GIFs are flattened to their first frame', 'info');
+                }
+                files.push({
+                    id: ++fileSeq,
+                    file: f,
+                    name: f.name,
+                    type: f.type,
+                    origSize: f.size,
+                    origURL: URL.createObjectURL(f),
+                    status: 'queued',
+                    compBlob: null,
+                    compURL: null,
+                    compSize: 0,
+                    outName: ''
+                });
+            });
+            renderList();
+            compressAll();
+            trackEvent('images-added');
+        }
+
+        // === Compression engine (canvas, 100% client-side) ===
+        function loadBitmap(file) {
+            if (window.createImageBitmap) {
+                return createImageBitmap(file, { imageOrientation: 'from-image' }).catch(() => createImageBitmap(file));
+            }
+            return new Promise((resolve, reject) => {
+                const url = URL.createObjectURL(file);
+                const img = new Image();
+                img.onload = () => { URL.revokeObjectURL(url); resolve(img); };
+                img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Cannot decode image')); };
+                img.src = url;
+            });
+        }
+
+        function targetMime(fileType) {
+            const sel = getFormat();
+            if (sel !== 'auto') return sel;
+            if (fileType === 'image/jpeg' || fileType === 'image/png' || fileType === 'image/webp' || fileType === 'image/avif') return fileType;
+            return 'image/png'; // GIF and others fall back to PNG
+        }
+
+        function extFor(mime) {
+            if (mime === 'image/jpeg') return '.jpg';
+            if (mime === 'image/png') return '.png';
+            if (mime === 'image/webp') return '.webp';
+            if (mime === 'image/avif') return '.avif';
+            return '.img';
+        }
+
+        function outName(original, mime) {
+            const dot = original.lastIndexOf('.');
+            const base = dot > 0 ? original.slice(0, dot) : original;
+            return base + '-compact' + extFor(mime);
+        }
+
+        function compressEntry(entry) {
+            entry.status = 'working';
+            renderList();
+            return loadBitmap(entry.file).then(src => {
+                let width = src.width;
+                let height = src.height;
+                const maxD = getMaxDim();
+                if (maxD > 0 && Math.max(width, height) > maxD) {
+                    const scale = maxD / Math.max(width, height);
+                    width = Math.round(width * scale);
+                    height = Math.round(height * scale);
+                }
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                // JPEG has no transparency — paint white behind transparent PNGs
+                const mime = targetMime(entry.type);
+                if (mime === 'image/jpeg') { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, width, height); }
+                ctx.drawImage(src, 0, 0, width, height);
+                if (src.close) src.close();
+                const q = mime === 'image/png' ? undefined : getQuality() / 100;
+                return new Promise((resolve, reject) => {
+                    canvas.toBlob((blob) => {
+                        if (!blob) { reject(new Error('Compression failed')); return; }
+                        if (entry.compURL) URL.revokeObjectURL(entry.compURL);
+                        entry.compBlob = blob;
+                        entry.compURL = URL.createObjectURL(blob);
+                        entry.compSize = blob.size;
+                        entry.outName = outName(entry.name, mime);
+                        entry.outDims = width + '×' + height;
+                        entry.status = 'done';
+                        resolve();
+                    }, mime, q);
+                });
+            }).catch(err => {
+                entry.status = 'error';
+                entry.error = err.message;
+            }).then(() => {
+                if (entry.status === 'done') trackEvent('action-compress');
+                renderList();
+                updateStats();
+            });
+        }
+
+        function compressAll() {
+            const pending = files.filter(f => f.status === 'queued' || f.status === 'error');
+            if (!pending.length) { updateStats(); return; }
+            $('statusText').textContent = 'Compressing ' + pending.length + ' image(s)…';
+            // Sequential to keep memory use flat on large batches
+            pending.reduce((p, entry) => p.then(() => compressEntry(entry)), Promise.resolve())
+                .then(() => { $('statusText').textContent = 'Ready'; });
+        }
+
+        let recompressTimer = null;
+        function recompressAll() {
+            clearTimeout(recompressTimer);
+            recompressTimer = setTimeout(() => {
+                files.forEach(f => { if (f.status === 'done') f.status = 'queued'; });
+                renderList();
+                compressAll();
+            }, 400);
+        }
+
+        // === File list ===
+        function savings(entry) {
+            if (!entry.compSize) return null;
+            const pct = Math.round((1 - entry.compSize / entry.origSize) * 100);
+            return pct;
+        }
+
+        function renderList() {
+            const list = $('fileList');
+            if (!files.length) {
+                list.innerHTML = '<div class="empty-note">No images yet — drop some above to start shrinking.</div>';
+                return;
+            }
+            list.innerHTML = files.map(e => {
+                const pct = savings(e);
+                let meta = '';
+                if (e.status === 'working' || e.status === 'queued') {
+                    meta = '<span class="working">⏳ compressing…</span>';
+                } else if (e.status === 'error') {
+                    meta = '<span style="color:var(--error)">⚠️ ' + escapeHtml(e.error || 'failed') + '</span>';
+                } else {
+                    meta = fmtSize(e.origSize) + ' → <strong>' + fmtSize(e.compSize) + '</strong> <span class="saved">(' + pct + '% smaller' + (e.outDims ? ' • ' + e.outDims : '') + ')</span>';
+                }
+                const canAct = e.status === 'done';
+                return '<div class="file-item" data-id="' + e.id + '">' +
+                    '<img class="thumb" src="' + e.origURL + '" alt="">' +
+                    '<div class="file-info"><div class="file-name">' + escapeHtml(e.name) + '</div><div class="file-meta">' + meta + '</div></div>' +
+                    '<div class="file-actions">' +
+                    '<button class="btn btn-sm" onclick="openCompare(' + e.id + ')" ' + (canAct ? '' : 'disabled') + '>🔍 Compare</button>' +
+                    '<button class="btn btn-sm" onclick="downloadOne(' + e.id + ')" ' + (canAct ? '' : 'disabled') + '>⬇️ Save</button>' +
+                    '<button class="btn btn-sm" onclick="removeOne(' + e.id + ')">✕</button>' +
+                    '</div></div>';
+            }).join('');
+        }
+
+        function updateStats() {
+            const done = files.filter(f => f.status === 'done');
+            const bar = $('bulkbar');
+            if (!files.length) { bar.hidden = true; $('downloadAllBtn').disabled = true; return; }
+            bar.hidden = false;
+            const orig = files.reduce((s, f) => s + f.origSize, 0);
+            const comp = done.reduce((s, f) => s + f.compSize, 0);
+            $('bulkStats').textContent = files.length + ' file(s) • ' + fmtSize(orig) + ' total';
+            if (done.length) {
+                const pct = Math.round((1 - comp / orig) * 100);
+                $('bulkSaved').textContent = '↓ ' + fmtSize(orig - comp) + ' saved (' + pct + '%)';
+            } else {
+                $('bulkSaved').textContent = '';
+            }
+            $('downloadAllBtn').disabled = !done.length;
+        }
+
+        function downloadOne(id) {
+            const e = files.find(f => f.id === id);
+            if (!e || !e.compBlob) return;
+            trackEvent('action-download-one');
+            const a = document.createElement('a');
+            a.href = e.compURL;
+            a.download = e.outName;
+            a.click();
+        }
+
+        function removeOne(id) {
+            const i = files.findIndex(f => f.id === id);
+            if (i === -1) return;
+            URL.revokeObjectURL(files[i].origURL);
+            if (files[i].compURL) URL.revokeObjectURL(files[i].compURL);
+            files.splice(i, 1);
+            renderList();
+            updateStats();
+        }
+
+        $('clearBtn').addEventListener('click', () => {
+            files.forEach(f => { URL.revokeObjectURL(f.origURL); if (f.compURL) URL.revokeObjectURL(f.compURL); });
+            files.length = 0;
+            renderList();
+            updateStats();
+            $('statusText').textContent = 'Ready';
+        });
+        // === Minimal ZIP writer (stored entries, no compression — files are already compact) ===
+        const CRC_TABLE = (() => {
+            const t = new Uint32Array(256);
+            for (let n = 0; n < 256; n++) {
+                let c = n;
+                for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+                t[n] = c;
+            }
+            return t;
+        })();
+
+        function crc32(bytes) {
+            let c = 0xFFFFFFFF;
+            for (let i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+            return (c ^ 0xFFFFFFFF) >>> 0;
+        }
+
+        function dosDateTime(d) {
+            return {
+                time: ((d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1)) & 0xFFFF,
+                date: ((((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate())) & 0xFFFF
+            };
+        }
+
+        async function buildZipBlob(entries) {
+            const enc = new TextEncoder();
+            const parts = [];
+            const central = [];
+            let offset = 0;
+            for (const { name, blob } of entries) {
+                const data = new Uint8Array(await blob.arrayBuffer());
+                const nameB = enc.encode(name);
+                const crc = crc32(data);
+                const dt = dosDateTime(new Date());
+                const lh = new DataView(new ArrayBuffer(30));
+                lh.setUint32(0, 0x04034b50, true);
+                lh.setUint16(4, 63, true);
+                lh.setUint16(6, 0x0800, true); // UTF-8 filenames
+                lh.setUint16(8, 0, true); // stored
+                lh.setUint16(10, dt.time, true);
+                lh.setUint16(12, dt.date, true);
+                lh.setUint32(14, crc, true);
+                lh.setUint32(18, data.length, true);
+                lh.setUint32(22, data.length, true);
+                lh.setUint16(26, nameB.length, true);
+                lh.setUint16(28, 0, true);
+                parts.push(lh.buffer, nameB, data);
+                const ch = new DataView(new ArrayBuffer(46));
+                ch.setUint32(0, 0x02014b50, true);
+                ch.setUint16(4, 63, true);
+                ch.setUint16(6, 63, true);
+                ch.setUint16(8, 0x0800, true);
+                ch.setUint16(10, 0, true);
+                ch.setUint16(12, dt.time, true);
+                ch.setUint16(14, dt.date, true);
+                ch.setUint32(16, crc, true);
+                ch.setUint32(20, data.length, true);
+                ch.setUint32(24, data.length, true);
+                ch.setUint16(28, nameB.length, true);
+                ch.setUint16(30, 0, true);
+                ch.setUint16(32, 0, true);
+                ch.setUint16(34, 0, true);
+                ch.setUint16(36, 0, true);
+                ch.setUint32(38, 0, true);
+                ch.setUint32(42, offset, true);
+                central.push(ch.buffer, nameB);
+                offset += 30 + nameB.length + data.length;
+            }
+            const centralSize = central.reduce((s, b) => s + (b.byteLength || b.length), 0);
+            const end = new DataView(new ArrayBuffer(22));
+            end.setUint32(0, 0x06054b50, true);
+            end.setUint16(8, entries.length, true);
+            end.setUint16(10, entries.length, true);
+            end.setUint32(12, centralSize, true);
+            end.setUint32(16, offset, true);
+            return new Blob([...parts, ...central, end.buffer], { type: 'application/zip' });
+        }
+
+        $('downloadAllBtn').addEventListener('click', async () => {
+            const done = files.filter(f => f.status === 'done' && f.compBlob);
+            if (!done.length) { showToast('Nothing compressed yet', 'error'); return; }
+            $('statusText').textContent = 'Building ZIP…';
+            try {
+                const zip = await buildZipBlob(done.map(f => ({ name: f.outName, blob: f.compBlob })));
+                const url = URL.createObjectURL(zip);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'compactpic-images.zip';
+                a.click();
+                setTimeout(() => URL.revokeObjectURL(url), 5000);
+                showToast(done.length + ' image(s) zipped', 'success');
+                trackEvent('action-zip');
+            } catch (e) {
+                showToast('ZIP failed: ' + e.message, 'error');
+            }
+            $('statusText').textContent = 'Ready';
+        });
+
+        // === Before/after compare ===
+        function openCompare(id) {
+            const e = files.find(f => f.id === id);
+            if (!e || !e.compBlob) return;
+            $('compareTitle').textContent = e.name;
+            $('cmpBefore').src = e.origURL;
+            $('cmpAfter').src = e.compURL;
+            $('cmpRange').value = 50;
+            updateCompareClip();
+            const pct = savings(e);
+            $('cmpStats').innerHTML = fmtSize(e.origSize) + ' → <strong>' + fmtSize(e.compSize) + '</strong> <span class="saved">(' + pct + '% smaller)</span>';
+            $('compareDialog').showModal();
+        }
+
+        function updateCompareClip() {
+            const v = $('cmpRange').value;
+            // Before image on top, clipped to the left v%
+            $('cmpBefore').style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+        }
+        $('cmpRange').addEventListener('input', updateCompareClip);
+        $('compareClose').addEventListener('click', () => $('compareDialog').close());
+        $('compareDialog').addEventListener('click', (e) => {
+            if (e.target === $('compareDialog')) $('compareDialog').close();
+        });
+
+        // === About dialog ===
+        $('aboutBtn').addEventListener('click', () => $('aboutDialog').showModal());
+        $('aboutClose').addEventListener('click', () => $('aboutDialog').close());
+        $('aboutDialog').addEventListener('click', (e) => {
+            if (e.target === $('aboutDialog')) $('aboutDialog').close();
+        });
+
+        // === Paste from clipboard (screenshots go straight in) ===
+        document.addEventListener('paste', (e) => {
+            const imgs = [...(e.clipboardData?.files || [])].filter(f => f.type.startsWith('image/'));
+            if (!imgs.length) return;
+            e.preventDefault();
+            addFiles(imgs);
+            showToast('Pasted ' + imgs.length + ' image(s)', 'success');
+            trackEvent('action-paste');
+        });
+
+        // === Generated sample image (works offline) ===
+        function makeSample() {
+            const c = document.createElement('canvas');
+            c.width = 1600; c.height = 1200;
+            const x = c.getContext('2d');
+            const sky = x.createLinearGradient(0, 0, 0, 1200);
+            sky.addColorStop(0, '#1a2a6c'); sky.addColorStop(.6, '#b21f1f'); sky.addColorStop(1, '#fdbb2d');
+            x.fillStyle = sky; x.fillRect(0, 0, 1600, 1200);
+            x.fillStyle = '#fff8d6'; x.beginPath(); x.arc(1250, 260, 130, 0, 7); x.fill();
+            x.fillStyle = '#2d3a4a';
+            x.beginPath(); x.moveTo(0, 1200); x.lineTo(0, 700); x.lineTo(450, 350); x.lineTo(800, 750); x.lineTo(1100, 500); x.lineTo(1600, 900); x.lineTo(1600, 1200); x.fill();
+            x.fillStyle = '#3d4f63';
+            x.beginPath(); x.moveTo(500, 1200); x.lineTo(900, 600); x.lineTo(1300, 1200); x.fill();
+            x.fillStyle = 'rgba(255,255,255,.92)'; x.font = 'bold 90px sans-serif'; x.textAlign = 'center';
+            x.fillText('CompactPic Sample', 800, 1080);
+            // Deterministic grain so the file has real byte-weight to compress
+            const img = x.getImageData(0, 0, 1600, 1200);
+            const d = img.data;
+            let seed = 42;
+            for (let i = 0; i < d.length; i += 4) {
+                seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+                const n = (seed % 17) - 8;
+                d[i] += n; d[i + 1] += n; d[i + 2] += n;
+            }
+            x.putImageData(img, 0, 0);
+            c.toBlob((blob) => {
+                if (!blob) { showToast('Sample failed', 'error'); return; }
+                addFiles([new File([blob], 'compactpic-sample.png', { type: 'image/png' })]);
+            }, 'image/png');
+        }
+        $('sampleBtn').addEventListener('click', () => { trackEvent('action-sample'); makeSample(); });
+
+        // === AVIF output, only where the browser can encode it ===
+        (function detectAVIF() {
+            try {
+                const c = document.createElement('canvas');
+                c.width = c.height = 4;
+                c.toBlob((blob) => {
+                    if (blob && blob.type === 'image/avif' && blob.size > 0) {
+                        const opt = $('avifOpt');
+                        if (opt) opt.hidden = false;
+                    }
+                }, 'image/avif');
+            } catch (e) {}
+        })();
+
+        // === Analytics events (shared Umami property — filter by hostname per tool) ===
+        function trackEvent(name) {
+            try { if (window.umami && typeof umami.track === 'function') umami.track(name); } catch (e) {}
+        }
+
+        // === Init ===
+        renderList();
+        updateStats();
+        if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+
+    </script>
+</body>
+</html>

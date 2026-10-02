@@ -1,0 +1,18 @@
+{
+  "name": "CompactPic — Free Online Image Compressor",
+  "short_name": "CompactPic",
+  "description": "Shrink JPEG, PNG, WebP in bulk. Convert formats, compare before/after, download as ZIP. Private, free, no signup.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
