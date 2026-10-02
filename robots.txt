@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://compactpic.com/sitemap.xml
+Sitemap: https://compactpic.vercel.app/sitemap.xml
