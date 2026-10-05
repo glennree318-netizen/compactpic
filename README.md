@@ -2,7 +2,7 @@
 
 Shrink JPEG, PNG and WebP photos, convert formats, resize in bulk, compare
 before/after, and download everything as a ZIP.
-**100% client-side. No backend. No tracking. No limits. Free forever.**
+**100% client-side. No backend. No uploads. No limits. Free forever.**
 
 ## ✨ Features
 
@@ -15,7 +15,12 @@ before/after, and download everything as a ZIP.
 
 ## 🔒 Privacy
 
-Photos never leave the browser. No uploads, no analytics by default, no cookies.
+Photos never leave the browser. No uploads, no server, no cookies.
+
+The page loads a small cookieless analytics script (Umami) on the production
+hostname only, to count visits. It sets no cookies, builds no profile, and never
+sees your images, because all resizing and format conversion happens locally.
+Load the page once and use it offline and nothing is sent at all.
 
 ## 🚀 Run it
 
